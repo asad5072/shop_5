@@ -7,6 +7,11 @@ import { RiCoupon3Line } from "react-icons/ri";
 import { TbBrandProducthunt } from "react-icons/tb";
 import { IoMdStarOutline } from "react-icons/io";
 import { IconType } from "react-icons/lib";
+import {
+	ADMIN_DASHBOARD,
+	ADD_CATEGORIES,
+	ALL_CATEGORIES,
+} from "@/routes/adminRoute";
 
 interface SidebarMenuItem {
 	title: string;
@@ -19,7 +24,7 @@ const admnSidebarMenu: SidebarMenuItem[] = [
 	{
 		title: "Dashboard",
 		icon: AiOutlineDashboard,
-		url: "/admin/dashboard",
+		url: ADMIN_DASHBOARD,
 	},
 	{
 		title: "Categories",
@@ -28,12 +33,12 @@ const admnSidebarMenu: SidebarMenuItem[] = [
 		submenu: [
 			{
 				title: "Add Category",
-				url: "/admin/categories/add",
+				url: ADD_CATEGORIES,
 				icon: BiCategory,
 			},
 			{
-				title: "All Category",
-				url: "/admin/categories",
+				title: "All Categories",
+				url: ALL_CATEGORIES,
 				icon: BiCategory,
 			},
 		],
