@@ -1,10 +1,16 @@
-import mongoose, { Schema, models, model } from "mongoose";
+import { Schema, models, model } from "mongoose";
+import globe from "@/public/globe.png";
 
 const CategorySchema = new Schema(
 	{
 		name: {
 			type: String,
 			required: true,
+		},
+		image: {
+			type: String,
+			required: false,
+			default: globe.src,
 		},
 		slug: {
 			type: String,
