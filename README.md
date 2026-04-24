@@ -16,6 +16,8 @@
 ## Category request send from frontend
 
 - create file (root)/admin/dashboard/category/add/page.tsx
+- npm install @hookform/resolvers, npm install react-hook-form
+-
 
 ## store management
 

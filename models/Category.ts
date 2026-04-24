@@ -1,5 +1,5 @@
 import { Schema, models, model } from "mongoose";
-import globe from "@/public/globe.png";
+import globe from "@/public/globe.svg";
 
 const CategorySchema = new Schema(
 	{
