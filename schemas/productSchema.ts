@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const productSchema = z.object({
+const productSchema = z.object({
 	name: z.string().min(2, "Name is required"),
 
 	slug: z
@@ -17,6 +17,7 @@ export const productSchema = z.object({
 	image: z.string().optional(),
 
 	category: z.string().min(1, "Category is required"),
+	stock: z.number().min(0, "Stock must be 0 or more"),
 
 	isActive: z.boolean(),
 
@@ -34,3 +35,4 @@ export const productSchema = z.object({
 		}),
 	),
 });
+export default productSchema;
