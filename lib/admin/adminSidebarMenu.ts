@@ -11,6 +11,7 @@ import {
 	ADMIN_DASHBOARD,
 	ADD_CATEGORIES,
 	ALL_CATEGORIES,
+	ADD_PRODUCTS,
 } from "@/routes/adminRoute";
 
 interface SidebarMenuItem {
@@ -50,22 +51,12 @@ const admnSidebarMenu: SidebarMenuItem[] = [
 		submenu: [
 			{
 				title: "Add Product",
-				url: "/admin/products/add",
-				icon: TbBrandProducthunt,
-			},
-			{
-				title: "Add Variant",
-				url: "/admin/products/variants/add",
+				url: ADD_PRODUCTS,
 				icon: TbBrandProducthunt,
 			},
 			{
 				title: "All Products",
 				url: "/admin/products",
-				icon: TbBrandProducthunt,
-			},
-			{
-				title: "Product Variants",
-				url: "/admin/products/variants",
 				icon: TbBrandProducthunt,
 			},
 		],
