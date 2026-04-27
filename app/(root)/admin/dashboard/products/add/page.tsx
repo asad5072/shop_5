@@ -21,11 +21,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 type FormValues = z.infer<typeof productSchema>;
+type Category = {
+	_id: string;
+	name: string;
+	slug: string;
+	description?: string;
+	isActive?: boolean;
+};
+
+type CategoryResponse = {
+	data: Category[];
+};
 
 export default function AddProduct() {
 	const [loading, setLoading] = useState(false);
 	const [slugEdited, setSlugEdited] = useState(false);
-	const [categories, setCategories] = useState<any[]>([]);
+	const [categories, setCategories] = useState<Category[]>([]);
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(productSchema),
@@ -58,7 +69,7 @@ export default function AddProduct() {
 		const fetchCategories = async () => {
 			try {
 				const res = await fetch("/api/category");
-				const data = await res.json();
+				const data: CategoryResponse = await res.json();
 				setCategories(data.data || []);
 			} catch (error) {
 				console.error(error);
