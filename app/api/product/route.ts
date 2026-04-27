@@ -2,6 +2,16 @@ import { NextResponse } from "next/server";
 import Product from "@/models/Product";
 import { connectToDatabase } from "@/lib/db";
 
+export type Size = {
+	size?: string;
+	stock?: number;
+};
+
+export type Variant = {
+	color?: string;
+	image?: string;
+	sizes?: Size[];
+};
 // 👉 CREATE PRODUCT
 export async function POST(req: Request) {
 	try {
@@ -39,12 +49,12 @@ export async function POST(req: Request) {
 		}
 
 		// 🔥 Clean variants (important)
-		const cleanVariants =
-			variants?.map((variant: any) => ({
+		const cleanVariants: Variant[] =
+			variants?.map((variant: Variant) => ({
 				color: variant.color || "",
 				image: variant.image || "",
 				sizes:
-					variant.sizes?.map((s: any) => ({
+					variant.sizes?.map((s) => ({
 						size: s.size || "",
 						stock: Number(s.stock) || 0,
 					})) || [],

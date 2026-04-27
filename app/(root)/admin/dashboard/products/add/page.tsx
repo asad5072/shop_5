@@ -99,10 +99,7 @@ export default function AddProduct() {
 			<h1 className="text-2xl font-bold">Add Product</h1>
 
 			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-5"
-				>
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
 					{/* Name */}
 					<FormField
 						control={form.control}
@@ -243,10 +240,7 @@ export default function AddProduct() {
 									>
 										<option value="">Select Category</option>
 										{categories.map((cat) => (
-											<option
-												key={cat._id}
-												value={cat._id}
-											>
+											<option key={cat._id} value={cat._id}>
 												{cat.name}
 											</option>
 										))}
@@ -282,11 +276,7 @@ export default function AddProduct() {
 						))}
 					</div>
 
-					<Button
-						type="submit"
-						disabled={loading}
-						className="w-full"
-					>
+					<Button type="submit" disabled={loading} className="w-full">
 						{loading ? "Saving..." : "Create Product"}
 					</Button>
 				</form>
