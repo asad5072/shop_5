@@ -12,6 +12,7 @@ import {
 	ADD_CATEGORIES,
 	ALL_CATEGORIES,
 	ADD_PRODUCTS,
+	ALL_PRODUCTS,
 } from "@/routes/adminRoute";
 
 interface SidebarMenuItem {
@@ -56,7 +57,7 @@ const admnSidebarMenu: SidebarMenuItem[] = [
 			},
 			{
 				title: "All Products",
-				url: "/admin/products",
+				url: ALL_PRODUCTS,
 				icon: TbBrandProducthunt,
 			},
 		],
