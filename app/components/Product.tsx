@@ -1,23 +1,33 @@
 "use client";
-import useProduct from "../features/product/useProduct";
 
-export default function Product() {
-	const { products } = useProduct();
+import { useEffect } from "react";
+import { fetchProducts } from "../features/product/productSlice";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+
+export default function ProductList() {
+	const dispatch = useAppDispatch();
+	const { products, loading, error } = useAppSelector((state) => state.product);
+
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, [dispatch]);
+
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>{error}</p>;
+
 	return (
-		<div className="grid grid-cols-2 gap-4">
+		<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 			{products.map((product) => (
 				<div
-					key={product.id}
-					className="px-3 py-2 border border-slate-800 rounded space-y-2"
+					key={product._id}
+					className="border p-4 rounded"
 				>
-					<p>{product.name}</p>
-					<p>Price: ${product.price.toFixed(2)}</p>
-					<button
-						onClick={() => {}}
-						className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-					>
-						Add to Cart
-					</button>
+					{/* <img
+						src={product.image || "/placeholder.png"}
+						className="h-40 w-full object-cover"
+					/> */}
+					<h2 className="font-bold">{product.name}</h2>
+					<p>${product.price}</p>
 				</div>
 			))}
 		</div>

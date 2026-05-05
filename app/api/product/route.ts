@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Product from "@/models/Product";
 import { connectToDatabase } from "@/lib/db";
+import "@/models/Category";
 
 export type Size = {
 	size?: string;
@@ -80,6 +81,30 @@ export async function POST(req: Request) {
 		console.error(error);
 		return NextResponse.json(
 			{ error: "Failed to create product" },
+			{ status: 500 },
+		);
+	}
+}
+
+export async function GET() {
+	try {
+		await connectToDatabase();
+
+		const products = await Product.find()
+			.populate("category", "name")
+			.sort({ createdAt: -1 });
+
+		return NextResponse.json({
+			success: true,
+			data: products,
+		});
+	} catch (error: any) {
+		console.error("🔥 PRODUCT API ERROR:", error);
+
+		return NextResponse.json(
+			{
+				error: error.message || "Failed to fetch products",
+			},
 			{ status: 500 },
 		);
 	}
