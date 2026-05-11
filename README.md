@@ -5,7 +5,6 @@
 - set mongodb atlas
 - create .env file
 - Create file @/lib/bd.ts
-- create API Route (POST) app/api/test/route.ts
 
 ## Model Creation for Category:
 
@@ -19,6 +18,10 @@
 - npm install @hookform/resolvers, npm install react-hook-form
 -
 
+## Product Save in Database
+
+- create API Route (POST) app/api/test/route.ts
+
 ## store management
 
 - install redux @reduxjs/toolkit & react-redux
@@ -27,3 +30,12 @@
   C. Create a provider.tsx file inside app folder and wrap {children} inside app/layout.tsx
   C. Create hooks.ts file inside store folder
   D. Create useProduct.ts file inside features/product folder
+
+## Product Fetching from database
+
+- fetch Product inside ProductSlice.ts file
+- Create Get request inside api/product/route.js
+
+## Add to cart
+
+- create cartSlice.ts inside features/product folder

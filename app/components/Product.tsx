@@ -3,10 +3,13 @@
 import { useEffect } from "react";
 import { fetchProducts } from "../features/product/productSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { Button } from "@/components/ui/button";
+import useProduct from "../features/product/useProduct";
 
 export default function ProductList() {
 	const dispatch = useAppDispatch();
 	const { products, loading, error } = useAppSelector((state) => state.product);
+	const { handleAddToCart } = useProduct();
 
 	useEffect(() => {
 		dispatch(fetchProducts());
@@ -28,6 +31,7 @@ export default function ProductList() {
 					/> */}
 					<h2 className="font-bold">{product.name}</h2>
 					<p>${product.price}</p>
+					<Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
 				</div>
 			))}
 		</div>
