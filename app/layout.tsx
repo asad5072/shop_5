@@ -4,8 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Providers from "./provider";
+import ReduxProvider from "./providers/ReduxProvider";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -40,9 +41,11 @@ export default function RootLayout({
 			)}
 		>
 			<body className="min-h-full flex flex-col">
-				<Providers>
-					<TooltipProvider>{children}</TooltipProvider>
-				</Providers>
+				<ReduxProvider>
+					<Providers>
+						<TooltipProvider>{children}</TooltipProvider>
+					</Providers>
+				</ReduxProvider>
 			</body>
 		</html>
 	);
